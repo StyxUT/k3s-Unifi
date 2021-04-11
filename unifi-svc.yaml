@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6789
+    name: ubnt-6789
+    protocol: TCP
+    targetPort: 6789
+  - port: 8080
+    name: ubnt-8080
+    protocol: TCP
+    targetPort: 8080
+  - port: 8443
+    name: ubnt-8443
+    protocol: TCP
+    targetPort: 8443
+  - port: 3478
+    name: ubnt-3478
+    protocol: UDP
+    targetPort: 3478
+  - port: 8881
+    name: ubnt-8881
+    protocol: TCP
+    targetPort: 8881
+  - port: 8882
+    name: ubnt-8882
+    protocol: TCP
+    targetPort: 8882
+  - port: 10001
+    name: ubnt-10001
+    protocol: UDP
+    targetPort: 10001
+  selector:
+    app: unifi
+  externalIPs:
+  - 192.168.0.211
+  - 192.168.0.221
+  - 192.168.0.222
+
