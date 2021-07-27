@@ -6,12 +6,12 @@ spec:
     accessModes:
     - ReadWriteOnce
     persistentVolumeReclaimPolicy: Retain
-    storageClassName: "synology"
+    storageClassName: synology
     mountOptions:
     - hard
     - nfsvers=4.1
     capacity:
         storage: 50Gi
     nfs:
-        server: 192.168.0.2
+        server: synology.home 
         path: /volume1/k8s-pv01

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: unifi
-        image: linuxserver/unifi-controller:5.11.50-ls40
+        image: linuxserver/unifi-controller:latest
         env:
         - name: "MEM_LIMIT"
           value: "1024M"
@@ -43,8 +43,8 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: "1024Mi"
-            ephemeral-storage: "200Mi"
+            memory: "750Mi"
+            #ephemeral-storage: "200Mi"
         volumeMounts:
         - name: unifi
           mountPath: "/config"

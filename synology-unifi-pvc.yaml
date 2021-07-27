@@ -1,10 +1,12 @@
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: synology-unifi
+  namespace: default
 spec:
   accessModes:
   - ReadWriteOnce
+  storageClassName: synology
   resources:
     requests:
       storage: 50Gi
