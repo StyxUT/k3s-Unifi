@@ -25,7 +25,7 @@ spec:
           value: "1024M"
         - name: "PUID"
           value: "1000"
-          name: "PGID"
+        - name: "PGID"
           value: "1000"
         #readinessProbe:
           #tcpSocket:
@@ -46,7 +46,7 @@ spec:
             memory: "750Mi"
             #ephemeral-storage: "200Mi"
         volumeMounts:
-        - name: unifi
+        - name: k8s-pv01
           mountPath: "/config"
           subPath: unifi/config
         ports:
@@ -72,6 +72,6 @@ spec:
           name: ubnt-10001
           protocol: UDP
       volumes:
-      - name: unifi
+      - name: k8s-pv01
         persistentVolumeClaim:
-          claimName: synology-unifi
+          claimName: synology-k8s-pv01
