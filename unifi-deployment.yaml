@@ -22,7 +22,7 @@ spec:
         image: linuxserver/unifi-controller:latest
         env:
         - name: "MEM_LIMIT"
-          value: "1024M"
+          value: "1024"
         - name: "PUID"
           value: "1000"
         - name: "PGID"
