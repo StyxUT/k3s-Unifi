@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: unifi
-        image: linuxserver/unifi-controller:latest
+        image: lscr.io/linuxserver/unifi-network-application:latest 
         env:
         - name: "MEM_LIMIT"
           value: "1024"
@@ -27,49 +27,51 @@ spec:
           value: "1000"
         - name: "PGID"
           value: "1000"
-        #readinessProbe:
-          #tcpSocket:
-            #port: ubnt-3478
-          #initialDelaySeconds: 10
-          #timeoutSeconds: 5
-          #failureThreshold: 10
-        #livenessProbe:
-          #httpGet:
-            #path: /
-            #port: web
-          #initialDelaySeconds: 10
-          #timeoutSeconds: 5
-          #failureThreshold: 10
+        - name: "TZ"
+          value: "America/Denver"
+        - name: "MONGO_USER"
+          value: "unifi"
+        - name: "MONGO_PASS"
+          value: ""
+        - name: "MONGO_HOST"
+          value: "unifi-db"
+        - name: "MONGO_PORT"
+          value: "27017"
+        - name: "MONGO_DBNAME"
+          value: "unifi"
+            #        - name: "MONGO_TLS"
+            #          value: ""
+            #        - name: "MONGO_AUTHSOURCE"
+            #          value: ""
         resources:
           requests:
             cpu: 100m
             memory: "750Mi"
-            #ephemeral-storage: "200Mi"
         volumeMounts:
         - name: k8s-pv01
           mountPath: "/config"
           subPath: unifi/config
         ports:
         - containerPort: 6789
-          name: ubnt-6789
+          name: mbl-thrput-tst
           protocol: TCP
         - containerPort: 8080
-          name: ubnt-8080
+          name: device-comtion
           protocol: TCP
         - containerPort: 8443
-          name: ubnt-8443
+          name: admin-portal
           protocol: TCP
         - containerPort: 3478
-          name: ubnt-3478
+          name: unifi-stun
           protocol: UDP
-        - containerPort: 8881
-          name: ubnt-8881
+        - containerPort: 8880
+          name: gst-http-redrct
           protocol: TCP
         - containerPort: 8882
-          name: ubnt-8882
+          name: gst-https-rdrct
           protocol: TCP
         - containerPort: 10001
-          name: ubnt-10001
+          name: ap-discovery
           protocol: UDP
       volumes:
       - name: k8s-pv01

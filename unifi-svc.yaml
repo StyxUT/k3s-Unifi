@@ -7,31 +7,31 @@ spec:
   type: ClusterIP
   ports:
   - port: 6789
-    name: ubnt-6789
+    name: mbl-thrput-tst
     protocol: TCP
     targetPort: 6789
   - port: 8080
-    name: ubnt-8080
+    name: device-comtion
     protocol: TCP
     targetPort: 8080
   - port: 8443
-    name: ubnt-8443
+    name: admin-portal
     protocol: TCP
     targetPort: 8443
   - port: 3478
-    name: ubnt-3478
+    name: unifi-stun
     protocol: UDP
     targetPort: 3478
   - port: 8881
-    name: ubnt-8881
+    name: gst-http-redrct
     protocol: TCP
     targetPort: 8881
   - port: 8882
-    name: ubnt-8882
+    name: gst-https-rdrct
     protocol: TCP
     targetPort: 8882
   - port: 10001
-    name: ubnt-10001
+    name: ap-discovery
     protocol: UDP
     targetPort: 10001
   selector:
@@ -41,4 +41,6 @@ spec:
   - 192.168.0.221
   - 192.168.0.222
   - 192.168.0.223
+  - 192.168.0.224
+
 
