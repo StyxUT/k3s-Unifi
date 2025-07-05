@@ -19,36 +19,27 @@ spec:
     spec:
       containers:
       - name: unifi
-        image: linuxserver/unifi-controller:latest
+      #  image: linuxserver/unifi-controller:latest
+        image: jacobalberty/unifi:latest
         env:
-        - name: "MEM_LIMIT"
-          value: "1024"
-        - name: "PUID"
-          value: "1000"
-        - name: "PGID"
-          value: "1000"
-        #readinessProbe:
-          #tcpSocket:
-            #port: ubnt-3478
-          #initialDelaySeconds: 10
-          #timeoutSeconds: 5
-          #failureThreshold: 10
-        #livenessProbe:
-          #httpGet:
-            #path: /
-            #port: web
-          #initialDelaySeconds: 10
-          #timeoutSeconds: 5
-          #failureThreshold: 10
+        - name: "TZ"
+          value: "America/Denver"
+        - name: "JVM_INIT_HEAP_SIZE"
+          value: "1024M"
         resources:
           requests:
             cpu: 100m
             memory: "750Mi"
-            #ephemeral-storage: "200Mi"
         volumeMounts:
         - name: k8s-pv01
-          mountPath: "/config"
-          subPath: unifi/config
+          mountPath: "unifi/data"
+          subPath: unifi/data
+        - name: k8s-pv01
+          mountPath: "unifi/log"
+          subPath: unifi/log
+        - name: k8s-pv01
+          mountPath: "unifi/cert"
+          subPath: unifi/cert
         ports:
         - containerPort: 6789
           name: ubnt-6789

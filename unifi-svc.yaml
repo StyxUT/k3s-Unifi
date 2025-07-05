@@ -19,8 +19,12 @@ spec:
     protocol: TCP
     targetPort: 8443
   - port: 3478
-    name: ubnt-3478
+    name: ubnt-3478-u
     protocol: UDP
+    targetPort: 3478
+  - port: 3478
+    name: ubnt-3478-t
+    protocol: TCP
     targetPort: 3478
   - port: 8881
     name: ubnt-8881
@@ -30,6 +34,14 @@ spec:
     name: ubnt-8882
     protocol: TCP
     targetPort: 8882
+  - port: 123
+    name: ntp-123
+    protocol: UDP
+    targetPort: 123
+  - port: 1900
+    name: disc-1900
+    protocol: UDP
+    targetPort: 1900
   - port: 10001
     name: ubnt-10001
     protocol: UDP
